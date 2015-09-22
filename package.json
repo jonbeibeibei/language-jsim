@@ -1,6 +1,5 @@
 {
   "name": "language-jsim",
-  "main": "./lib/language-jsim",
   "version": "0.0.0",
   "description": "Basic syntanx highlighting for jsim language",
   "keywords": [
