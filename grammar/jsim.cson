@@ -1,0 +1,17 @@
+'scopeName': 'source.java'
+'name': 'Jsim'
+'fileTypes':[
+  'jsim'
+]
+
+'pattersn':[
+  'match':
+]
+
+'repository':
+  'comment'
+    'captures':
+
+
+    'match': '(//).*'
+    
