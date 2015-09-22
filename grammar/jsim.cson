@@ -1,17 +1,155 @@
-'scopeName': 'source.java'
+'scopeName': 'source.jsim'
 'name': 'Jsim'
 'fileTypes':[
   'jsim'
 ]
 
-'pattersn':[
-  'match':
+'patterns':[
+  {
+    'comment': 'Match comment patterns'
+    'include': '#comments'
+  }
+  {
+    'comment': 'Match strings'
+    'include': '#strings'
+  }
+  {
+    'comment': 'Match device statements'
+    'include': '#device-statements'
+  }
+  {
+    'comment': 'Match control statements'
+    'include': '#ctrl-statements'
+  }
+  {
+    'comment':'Match numeric constants'
+    'include': '#constants'
+  }
 ]
 
 'repository':
-  'comment'
-    'captures':
+  'strings':
+    'patterns': [
+      {
+        'begin': '"'
+        'beginCaptures':
+          '0':
+            'name': 'punctuation.definition.string.begin.jsim'
+        'end': '"'
+        'endCaptures':
+          '0':
+            'name': 'punctuation.definition.string.end.jsim'
+        'name': 'string.quoted.double.jsim'
+        'comment': 'matches double quoted strings'
+      }
+      {
+        'begin': '\''
+        'beginCaptures':
+          '0':
+            'name': 'punctuation.definition.string.begin.jsim'
+        'end':'\''
+        'endCaptures':
+          '0':
+            'name': 'punctuation.definition.string.end.jsim'
+        'name': 'string.quoted.singe.jsim'
+      }
+    ]
+  'comments':
+    'patterns': [
+      {
+        'captures':
+          '0':
+            'name': 'punctuation.definition.comment.jsim'
+        'match': '/\\*\\*/'
+        'name': 'comment.block.empty.jsim'
+        'comment': 'Empty comment block'
+      }
+      {
+        'include': '#comments-inline'
+      }
+    ]
+  'comments-inline':
+    'patterns': [
+      {
+        'begin': '/\\*'
+        'captures':
+          '0':
+            'name': 'punctuation.definition.comment.jsim'
+        'end': '\\*/'
+        'name': 'comment.block.jsim'
+      }
+      {
+        'begin': '(^[ \\t]+)?(//))'
+        'beginCaptures':
+          '1':
+            'name': 'punctuation.whitespace.comment.leading.jsim'
+          '2':
+            'name': 'punctuation.definition.comment.jsim'
+        'end': '\\n'
+        'name': 'comment.line.double-slash.jsim'
+        'comment':'1 matches any whitespace preceding //, 2 end matches //, end matches the newline'
+      }
+      {
+        'begin': '\*.*'
+        'beginCaptures':
+          '1':
+            'name': 'punctuation.definition.comment.jsim'
+        'end': '\\n'
+        'name': 'comment.line.asterisk'
+        'comment': 'Matches comments starting with *'
+      }
+    ]
+  'ctrl-statements':
+    'patterns':[
+      {
+        'match': '(\.(checkoff|connect|dc|end|global|model|mverify|op|options|plot|plotdef|subckt|ends|temp|tempdir|verify|include))($|\\s+)(.*)'
+        'captures':
+          '1':
+            'name':'keyword.control.jsim'
+          '4':
+            'name': 'variable.parameter.jsim'
+        'name': 'entity.function.jsim'
+      }
+      {
+        'include': '#include-statement'
+        'comment': 'Put this in the array last so that it overrides generic control statements'
+      }
+      {
+        'include': '#subckt-statement'
+        'comment': 'Put this in the array last to override generic control statements'
+      }
 
-
-    'match': '(//).*'
-    
+    ]
+    'repository':
+      'include-statement':
+        'match':'\.include'
+        'name': 'keyword.control.import.include.jsim'
+        'comment': 'Matches .include statements'
+      'subckt-statement':
+          'match':'(\.subckt)\\s+(([A-Za-z]+\\s+)*)'
+        'captures':
+          '1':
+            'name': 'keyword.control.jsim'
+          '2':
+            'name': 'variable.parameter.jsim'
+        'name': 'entity.function.jsim'
+        'comment': 'matches .subckt staetments'
+  'constants':
+      'patterns':[
+        {
+          'match': '[0-9+\\.?[0-9]*]'
+          'name': 'constant.numeric.jsim'
+        }
+      ]
+  'device-statements':
+    'patterns': [
+      {
+        'match': '^((R|r|C|c|L|l|M|m|V|v|I|i|X|x|E|e|F|f|G|g|H|h|W|w).*?)(?=\\s)\\s*(([A-Za-z]+\\s+)*)'
+        'captures':
+          '1':
+            'name': 'keyword.control.jsim'
+          '3':
+            'name': 'variable.parameter.jsim'
+        'comment': 'Matches device statement and highlights paramters separately'
+      }
+    ]
