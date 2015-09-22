@@ -1,10 +1,10 @@
 'scopeName': 'source.jsim'
 'name': 'Jsim'
-'fileTypes':[
+'fileTypes': [
   'jsim'
 ]
 
-'patterns':[
+'patterns': [
   {
     'comment': 'Match comment patterns'
     'include': '#comments'
@@ -135,12 +135,12 @@
         'name': 'entity.function.jsim'
         'comment': 'matches .subckt staetments'
   'constants':
-      'patterns':[
-        {
-          'match': '[0-9+\\.?[0-9]*]'
-          'name': 'constant.numeric.jsim'
-        }
-      ]
+    'patterns':[
+      {
+        'match': '[0-9+\\.?[0-9]*]'
+        'name': 'constant.numeric.jsim'
+      }
+    ]
   'device-statements':
     'patterns': [
       {
