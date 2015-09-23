@@ -7,7 +7,7 @@
     "grammar",
     "syntax"
   ],
-  "repository": "https://github.com/atom/language-jsim",
+  "repository": "https://github.com/tjjjwxzq/language-jsim",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
