@@ -2,7 +2,7 @@
 
 Provides syntax highlighting for [jsim](https://github.com/terman/6.004_courseware) netlist simulator language.
 
-![Sample configuration](https://github.com/tjjjwxzq/language-jsim/sample.PNG)
+![Sample configuration](https://github.com/tjjjwxzq/language-jsim/master/sample.PNG)
 
 ## Installation
 Using `apm` from the commandline
