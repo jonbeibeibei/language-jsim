@@ -7,10 +7,6 @@
 'patterns': [
   {
     'match': '((#).*$\\n?)|((;).*$\\n?)'
-    'name': 'punctuation.definition.string'
-  }
-  {
-    'match': '((#).*$\\n?)|((;).*$\\n?)'
     'name': 'comment.line.number-sign.jsim'
   }
 ]
