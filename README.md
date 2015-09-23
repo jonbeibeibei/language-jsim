@@ -2,4 +2,11 @@
 
 Provides syntax highlighting for jsim netlist simulator language.
 
-![Sample configuration](https://f.cloud.github.com/assets/69169/2290250/c35d867a-a017-11e3-86be-cd7c5bf3ff9b.gif)
+![Sample configuration](https://github.com/tjjjwxzq/language-jsim/blob/master/sample.PNG)
+
+## Installation
+Using `apm` from the commandline
+```
+apm install language-jsim
+```
+Alternatively, search for the language-jsim package in Settings View.
