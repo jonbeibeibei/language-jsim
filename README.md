@@ -4,6 +4,8 @@ Provides syntax highlighting for [jsim](https://github.com/terman/6.004_coursewa
 
 ![Sample configuration](https://raw.githubusercontent.com/tjjjwxzq/language-jsim/master/sample.PNG)
 
+Latest version adds highlighting for tmsim as well. Atom will recognize files with either the 'jsim' or 'tmsim' extension.
+
 ## Installation
 Using `apm` from the commandline
 ```
