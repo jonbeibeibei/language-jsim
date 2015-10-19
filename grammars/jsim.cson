@@ -2,9 +2,14 @@
 'name': 'Jsim'
 'fileTypes': [
   'jsim'
+  'tmsim'
 ]
 
 'patterns': [
+  {
+    'comment': 'Match tmsim statements'
+    'include': '#tmsim-statements'
+  }
   {
     'include':'#device-statements'
   }
@@ -178,5 +183,45 @@
             ]
         'comment': 'Matches device statement and highlights paramters separately'
         'name': 'meta.device.jsim'
+      }
+    ]
+
+  'tmsim-statements':
+    'patterns': [
+      {
+        'match': '(symbols|states|action|tape|result|result1)(?=\\s)\\s*(.*)'
+        'captures':
+          '1':
+            'name': 'entity.name.function.tmsim'
+          '2':
+            'patterns':[
+              {
+                'include': '#constants'
+              }
+
+            ]
+        'comment': 'Matches tmsim statements and highlights paramters separately'
+        'name': 'meta.function.tmsim'
+      }
+      {
+        'include': '#checkoff-statement'
+      }
+    ]
+
+  'checkoff-statement':
+    'patterns': [
+      {
+        'match': '(checkoff)(?=\\s)\\s*(.*)'
+        'captures':
+          '1':
+            'name': 'entity.name.function.tmsim'
+          '2':
+            'patterns':[
+              {
+                'include':'#strings'
+              }
+            ]
+        'comment': 'Matches tmsim checkoff statement and highlights string parameter'
+        'name': 'meta.function.tmsim'
       }
     ]
